@@ -16,41 +16,7 @@ const feeStructure = {
   nursery: 45000 + 1000,
   primary: 49000 + 1000,
 };
-function getClassCategory(selectedClass) {
-  if (selectedClass.startsWith("nur")) return "nursery";
-  if (selectedClass.startsWith("pry")) return "primary";
-  return "others";
-}
 
-// Update amount based on class and payment type
-function updateAmount() {
-  const selectedClass = classSelect.value;
-  const paymentType = paymentTypeSelect.value;
-  const category = getClassCategory(selectedClass);
-  let amount = 0;
-
-  if (category === "nursery") {
-    amount = feeStructure.nursery;
-  } else if (category === "primary") {
-    amount = feeStructure.primary;
-  }
-
-  if (paymentType === "half") {
-    amount = amount / 2;
-  }
-
-  if (selectedClass === "others") {
-    fixedAmountDiv.classList.remove("active");
-    customAmountDiv.classList.add("active");
-  } else {
-    fixedAmountDiv.classList.add("active");
-    customAmountDiv.classList.remove("active");
-    amountInput.value = amount.toLocaleString("en-NG", {
-      style: "currency",
-      currency: "NGN",
-    });
-  }
-}
 // Update amount based on class and payment type
 function updateAmount() {
   const selectedClass = classSelect.value;
